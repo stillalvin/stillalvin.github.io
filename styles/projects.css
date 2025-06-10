@@ -3,7 +3,7 @@
     padding: 8rem 2rem 2rem;
     text-align: center;
     background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7)),
-                url('../assets/images/projects-header-bg.jpg') center/cover;
+                url('../assets/images/projects-header-bg.jpeg') center/cover;
     position: relative;
     overflow: hidden;
 }

@@ -1,10 +1,15 @@
 // Loading Screen
 window.addEventListener('load', () => {
     const loadingScreen = document.querySelector('.loading-screen');
-    loadingScreen.style.opacity = '0';
+    const loaderText = document.querySelector('.loader-text');
+    
+    // Wait for text animation to complete
     setTimeout(() => {
-        loadingScreen.style.display = 'none';
-    }, 500);
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }, 2000); // Adjust this timing based on your animation duration
 });
 
 // Three.js Background Setup
@@ -152,12 +157,12 @@ backToTop.addEventListener('click', () => {
 // Project data
 const projects = [
     {
-        title: "Anime Portfolio",
+        title: "SHOEPALACE(E-commerce)",
         description: "A creative portfolio website with anime-inspired design",
-        image: "https://via.placeholder.com/300x200",
-        technologies: ["HTML", "CSS", "JavaScript", "Three.js"],
+        image: "assets/images/pro-1.png",
+        technologies: ["HTML", "CSS", "JavaScript"],
         category: "web",
-        link: "#"
+        link: "https://stillalvin.github.io/shoepalace/"
     },
     {
         title: "3D Character Viewer",
@@ -183,42 +188,40 @@ function createProjectCards() {
     projectGrid.innerHTML = ''; // Clear existing cards
     
     projects.forEach(project => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.setAttribute('data-category', project.category);
-        card.innerHTML = `
-            <div class="card-inner">
-                <div class="card-front">
-                    <div class="project-image">
-                        <img src="${project.image}" alt="${project.title}">
-                        <div class="project-overlay">
-                            <div class="project-tech">
-                                ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>${project.title}</h3>
-                        <p>${project.description}</p>
-                    </div>
-                </div>
-                <div class="card-back">
-                    <div class="project-details">
-                        <h3>${project.title}</h3>
-                        <p>${project.description}</p>
-                        <ul class="project-features">
-                            ${project.technologies.map(tech => `<li>${tech}</li>`).join('')}
-                        </ul>
-                        <div class="project-links">
-                            <a href="${project.link}" class="btn secondary">View Project</a>
-                            <!-- <a href="#" class="btn primary">Source Code</a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+        const card = createProjectCard(project);
         projectGrid.appendChild(card);
     });
+}
+
+function createProjectCard(project) {
+    const template = document.getElementById('project-template');
+    const card = template.content.cloneNode(true);
+    
+    // Set project image
+    const img = card.querySelector('.project-image img');
+    img.src = project.image;
+    img.alt = project.title;
+    
+    // Set project title and description
+    const title = card.querySelector('.project-content h3');
+    title.textContent = project.title;
+    
+    const description = card.querySelector('.project-content p');
+    description.textContent = project.description;
+    
+    // Set project technologies
+    const techContainer = card.querySelector('.project-tech');
+    project.technologies.forEach(tech => {
+        const span = document.createElement('span');
+        span.textContent = tech;
+        techContainer.appendChild(span);
+    });
+    
+    // Set project link
+    const link = card.querySelector('.view-project');
+    link.href = project.link;
+    
+    return card;
 }
 
 // Project filtering

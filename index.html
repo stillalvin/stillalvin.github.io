@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Creative Developer & Designer Portfolio - Anime-Inspired Digital Experiences">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Portfolio | Anime-Inspired</title>
+    <title>Alvin's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Three.js for 3D elements -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -19,7 +19,18 @@
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen">
-        <div class="loader"></div>
+        <div class="loader-content">
+            <div class="loader-icon">
+                <img src="assets/images/favicon.png" alt="A" class="favicon">
+            </div>
+            <div class="loader-text">
+                <span>A</span>
+                <span>L</span>
+                <span>V</span>
+                <span>I</span>
+                <span>N</span>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -168,17 +179,17 @@
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
-                    <p>contact@example.com</p>
+                    <p>agarialvin101@gmail.com</p>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <h3>Phone</h3>
-                    <p>+1 234 567 890</p>
+                    <p>+234 705 165 3108</p>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Location</h3>
-                    <p>New York, USA</p>
+                    <p>Ughelli, Delta State, Nigeria</p>
                 </div>
             </div>
             <form id="contact-form">
@@ -227,7 +238,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Alvin. All rights reserved.</p>
         </div>
     </footer>
 
@@ -235,6 +246,29 @@
     <button id="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Project Card Template -->
+    <template id="project-template">
+        <div class="project-card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="project-image">
+                        <img src="" alt="Project Image">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-content">
+                            <h3></h3>
+                            <p></p>
+                        </div>
+                        <div class="project-tech"></div>
+                        <div class="project-links">
+                            <a href="#" class="view-project" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
 
     <script src="script.js"></script>
 </body>
