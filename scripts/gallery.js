@@ -1,5 +1,5 @@
 // Gallery Data
-const galleryItems = [
+const galleryData = [
     {
         id: 1,
         category: 'anime',
@@ -89,45 +89,73 @@ document.addEventListener('DOMContentLoaded', () => {
     modelContainers.forEach(container => {
         initThreeJS(container.id);
     });
+
+    // Initialize gallery filtering
+    initGalleryFiltering();
+    
+    // Initialize floating characters
+    initFloatingChars();
+    
+    // Initialize gallery item hover effects
+    initGalleryHoverEffects();
 });
 
 // Gallery Filtering
-const filterButtons = document.querySelectorAll('.filter-btn');
-const galleryItems = document.querySelectorAll('.gallery-item');
+function initGalleryFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
 
-        const filter = button.getAttribute('data-filter');
+            const filter = button.getAttribute('data-filter');
 
-        galleryItems.forEach(item => {
-            if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                item.style.display = 'block';
-                // Add animation
-                item.style.animation = 'fadeIn 0.5s ease-out';
-            } else {
-                item.style.display = 'none';
-            }
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                    // Add animation
+                    item.style.animation = 'fadeIn 0.5s ease-out';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
     });
-});
+}
 
 // Floating Characters Animation
-const floatingChars = document.querySelectorAll('.floating-char');
+function initFloatingChars() {
+    const floatingChars = document.querySelectorAll('.floating-char');
 
-floatingChars.forEach(char => {
-    // Random initial position
-    char.style.left = `${Math.random() * 80}%`;
-    char.style.top = `${Math.random() * 80}%`;
-    
-    // Random animation duration
-    const duration = 5 + Math.random() * 3;
-    char.style.animationDuration = `${duration}s`;
-});
+    floatingChars.forEach(char => {
+        // Random initial position
+        char.style.left = `${Math.random() * 80}%`;
+        char.style.top = `${Math.random() * 80}%`;
+        
+        // Random animation duration
+        const duration = 5 + Math.random() * 3;
+        char.style.animationDuration = `${duration}s`;
+    });
+}
+
+// Gallery Item Hover Effects
+function initGalleryHoverEffects() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'scale(1.02)';
+        });
+
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'scale(1)';
+        });
+    });
+}
 
 // Loading Animation
 window.addEventListener('load', () => {
@@ -138,15 +166,4 @@ window.addEventListener('load', () => {
             loading.style.display = 'none';
         }, 500);
     }
-});
-
-// Add hover effect to gallery items
-galleryItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'scale(1.02)';
-    });
-
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'scale(1)';
-    });
 }); 
