@@ -1,3 +1,12 @@
+// Loading Screen
+window.addEventListener('load', () => {
+    const loadingScreen = document.querySelector('.loading-screen');
+    loadingScreen.style.opacity = '0';
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
+    }, 500);
+});
+
 // Three.js Background Setup
 let scene, camera, renderer, particles;
 
@@ -52,37 +61,118 @@ initThreeJS();
 animate();
 window.addEventListener('resize', onWindowResize);
 
+// Navigation
+const navbar = document.querySelector('.navbar');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Mobile navigation toggle
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    navToggle.classList.toggle('active');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('active');
+        navToggle.classList.remove('active');
+    }
+});
+
+// Active navigation link
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').slice(1) === current) {
+            item.classList.add('active');
+        }
+    });
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        const target = document.querySelector(this.getAttribute('href'));
+        const headerOffset = 100;
+        const elementPosition = target.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
             behavior: 'smooth'
         });
+
+        // Close mobile menu after clicking
+        navLinks.classList.remove('active');
+        navToggle.classList.remove('active');
+    });
+});
+
+// Back to top button
+const backToTop = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
 });
 
 // Project data
 const projects = [
     {
-        title: "Project 1",
-        description: "An anime-inspired web application",
+        title: "Anime Portfolio",
+        description: "A creative portfolio website with anime-inspired design",
         image: "https://via.placeholder.com/300x200",
-        technologies: ["HTML", "CSS", "JavaScript"],
+        technologies: ["HTML", "CSS", "JavaScript", "Three.js"],
+        category: "web",
         link: "#"
     },
     {
-        title: "Project 2",
-        description: "3D Interactive Experience",
+        title: "3D Character Viewer",
+        description: "Interactive 3D character viewer with animations",
         image: "https://via.placeholder.com/300x200",
-        technologies: ["Three.js", "GSAP"],
+        technologies: ["Three.js", "GSAP", "Blender"],
+        category: "design",
         link: "#"
     },
     {
-        title: "Project 3",
-        description: "Creative Portfolio Design",
+        title: "Mobile Game UI",
+        description: "Anime-style mobile game interface design",
         image: "https://via.placeholder.com/300x200",
-        technologies: ["React", "Styled Components"],
+        technologies: ["Figma", "Adobe XD", "Illustrator"],
+        category: "mobile",
         link: "#"
     }
 ];
@@ -90,43 +180,134 @@ const projects = [
 // Create project cards
 function createProjectCards() {
     const projectGrid = document.querySelector('.project-grid');
+    projectGrid.innerHTML = ''; // Clear existing cards
     
     projects.forEach(project => {
         const card = document.createElement('div');
         card.className = 'project-card';
+        card.setAttribute('data-category', project.category);
         card.innerHTML = `
-            <img src="${project.image}" alt="${project.title}">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <div class="technologies">
-                ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}">
+                        <div class="project-overlay">
+                            <div class="project-tech">
+                                ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <div class="project-details">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <ul class="project-features">
+                            ${project.technologies.map(tech => `<li>${tech}</li>`).join('')}
+                        </ul>
+                        <div class="project-links">
+                            <a href="${project.link}" class="btn secondary">View Project</a>
+                            <!-- <a href="#" class="btn primary">Source Code</a> -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a href="${project.link}" class="btn secondary">View Project</a>
         `;
         projectGrid.appendChild(card);
     });
 }
 
+// Project filtering
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+        const cards = document.querySelectorAll('.project-card');
+
+        cards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
 // Initialize project cards
 createProjectCards();
 
-// Form submission handling
+// Form handling
 const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert('Thank you for your message! I will get back to you soon.');
-    contactForm.reset();
-});
+const formGroups = document.querySelectorAll('.form-group');
 
-// Add scroll reveal animation
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (sectionTop < windowHeight * 0.75) {
-            section.classList.add('reveal');
+formGroups.forEach(group => {
+    const input = group.querySelector('input, textarea');
+    input.addEventListener('focus', () => {
+        group.classList.add('focused');
+    });
+    input.addEventListener('blur', () => {
+        if (!input.value) {
+            group.classList.remove('focused');
         }
     });
-}); 
+});
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Add loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    // Simulate form submission
+    setTimeout(() => {
+        // Reset form
+        this.reset();
+        formGroups.forEach(group => group.classList.remove('focused'));
+        
+        // Show success message
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+        submitBtn.classList.add('success');
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.classList.remove('success');
+            submitBtn.disabled = false;
+        }, 3000);
+    }, 2000);
+});
+
+// Scroll reveal animation
+const revealElements = document.querySelectorAll('.section-title, .about-content, .project-grid, .contact-content');
+
+const revealOnScroll = () => {
+    revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight * 0.75) {
+            element.classList.add('reveal');
+        }
+    });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll); 

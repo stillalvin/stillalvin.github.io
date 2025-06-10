@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Anime & 3D Art</title>
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles/gallery.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Gallery Header -->
+    <section class="gallery-header">
+        <h1>Art Gallery</h1>
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="anime">Anime</button>
+            <button class="filter-btn" data-filter="3d">3D Models</button>
+            <button class="filter-btn" data-filter="digital">Digital Art</button>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+        <!-- Anime Art Section -->
+        <div class="gallery-item anime" data-category="anime">
+            <div class="card-3d">
+                <div class="card-front">
+                    <img src="../assets/images/anime1.jpg" alt="Anime Art 1">
+                    <h3>Anime Character</h3>
+                </div>
+                <div class="card-back">
+                    <p>Original character design inspired by modern anime style</p>
+                    <span class="tags">#anime #character #design</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Model Section -->
+        <div class="gallery-item 3d" data-category="3d">
+            <div class="card-3d">
+                <div class="card-front">
+                    <div class="model-container" id="model1"></div>
+                    <h3>3D Character</h3>
+                </div>
+                <div class="card-back">
+                    <p>Interactive 3D model created with Three.js</p>
+                    <span class="tags">#3d #interactive #model</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- More gallery items will be added dynamically -->
+    </section>
+
+    <!-- Floating Anime Characters -->
+    <div class="floating-characters">
+        <img src="../assets/images/floating-char1.png" alt="Floating Character 1" class="floating-char">
+        <img src="../assets/images/floating-char2.png" alt="Floating Character 2" class="floating-char">
+    </div>
+
+    <script src="../scripts/gallery.js"></script>
+</body>
+</html> 

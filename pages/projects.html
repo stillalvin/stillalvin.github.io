@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Portfolio</title>
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles/projects.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-text">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Projects Header -->
+    <section class="projects-header">
+        <h1>My Projects</h1>
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="3d">3D Projects</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid">
+        <!-- Project Card 1 -->
+        <div class="project-card" data-category="web">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="project-image">
+                        <img src="../assets/images/projects/project1.jpg" alt="Project 1">
+                        <div class="project-overlay">
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Anime Portfolio Website</h3>
+                        <p>A modern portfolio website with anime-inspired design elements</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <div class="project-details">
+                        <h3>Project Details</h3>
+                        <p>This project showcases a unique blend of anime aesthetics and modern web development techniques.</p>
+                        <ul class="project-features">
+                            <li>3D Interactive Elements</li>
+                            <li>Anime-Inspired Animations</li>
+                            <li>Responsive Design</li>
+                            <li>Custom 3D Models</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="btn secondary"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card" data-category="3d">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="project-image">
+                        <div class="model-container" id="model1"></div>
+                        <div class="project-overlay">
+                            <div class="project-tech">
+                                <span>Three.js</span>
+                                <span>WebGL</span>
+                                <span>GSAP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>3D Character Viewer</h3>
+                        <p>Interactive 3D character viewer with animations</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <div class="project-details">
+                        <h3>Project Details</h3>
+                        <p>An interactive 3D character viewer that allows users to explore and animate 3D models.</p>
+                        <ul class="project-features">
+                            <li>Real-time 3D Rendering</li>
+                            <li>Custom Animations</li>
+                            <li>Interactive Controls</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="btn secondary"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More project cards will be added dynamically -->
+    </section>
+
+    <!-- Project Showcase -->
+    <section class="project-showcase">
+        <div class="showcase-content">
+            <h2>Featured Project</h2>
+            <div class="showcase-grid">
+                <div class="showcase-info">
+                    <h3>Anime-Inspired 3D Portfolio</h3>
+                    <p>A unique portfolio website that combines anime aesthetics with modern web technologies and 3D elements.</p>
+                    <div class="showcase-features">
+                        <div class="feature">
+                            <i class="fas fa-cube"></i>
+                            <span>3D Models</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Custom Design</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Responsive</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn primary">View Project</a>
+                </div>
+                <div class="showcase-preview">
+                    <div class="preview-container">
+                        <img src="../assets/images/projects/showcase.jpg" alt="Project Showcase">
+                        <div class="preview-overlay">
+                            <div class="preview-controls">
+                                <button class="preview-btn"><i class="fas fa-play"></i></button>
+                                <button class="preview-btn"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../scripts/projects.js"></script>
+</body>
+</html> 

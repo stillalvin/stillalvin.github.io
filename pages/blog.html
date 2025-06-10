@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Anime & Tech</title>
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles/blog.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-text">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <h1>Blog & Updates</h1>
+        <div class="blog-categories">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="anime">Anime</button>
+            <button class="category-btn" data-category="tech">Tech</button>
+            <button class="category-btn" data-category="projects">Projects</button>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid">
+        <!-- Featured Post -->
+        <article class="blog-post featured">
+            <div class="post-image">
+                <img src="../assets/images/blog/featured.jpg" alt="Featured Post">
+                <div class="post-category">Featured</div>
+            </div>
+            <div class="post-content">
+                <h2>Creating Anime-Inspired Web Experiences</h2>
+                <div class="post-meta">
+                    <span class="date">March 15, 2024</span>
+                    <span class="category">Tech</span>
+                </div>
+                <p>Exploring the intersection of anime aesthetics and modern web development...</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </article>
+
+        <!-- Regular Posts -->
+        <article class="blog-post">
+            <div class="post-image">
+                <img src="../assets/images/blog/post1.jpg" alt="Blog Post 1">
+                <div class="post-category">Anime</div>
+            </div>
+            <div class="post-content">
+                <h3>Top Anime Art Styles in 2024</h3>
+                <div class="post-meta">
+                    <span class="date">March 10, 2024</span>
+                    <span class="category">Anime</span>
+                </div>
+                <p>Discover the latest trends in anime art and design...</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </article>
+
+        <!-- More blog posts will be added dynamically -->
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="blog-sidebar">
+        <!-- Search Widget -->
+        <div class="widget search-widget">
+            <h3>Search</h3>
+            <form class="search-form">
+                <input type="text" placeholder="Search posts...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="widget categories-widget">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#">Anime <span>(5)</span></a></li>
+                <li><a href="#">Tech <span>(3)</span></a></li>
+                <li><a href="#">Projects <span>(4)</span></a></li>
+                <li><a href="#">Tutorials <span>(2)</span></a></li>
+            </ul>
+        </div>
+
+        <!-- Recent Posts Widget -->
+        <div class="widget recent-posts-widget">
+            <h3>Recent Posts</h3>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="../assets/images/blog/thumb1.jpg" alt="Recent Post 1">
+                        <div class="post-info">
+                            <h4>3D Modeling Tips</h4>
+                            <span class="date">March 12, 2024</span>
+                        </div>
+                    </a>
+                </li>
+                <!-- More recent posts -->
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <span>...</span>
+        <a href="#">Next</a>
+    </div>
+
+    <script src="../scripts/blog.js"></script>
+</body>
+</html> 
