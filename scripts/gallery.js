@@ -21,9 +21,14 @@ const galleryData = [
 
 // Initialize Three.js for 3D models
 let scene, camera, renderer, mixer, clock;
+let modelsLoaded = 0;
+let totalModels = 0;
 
 function initThreeJS(containerId) {
     const container = document.getElementById(containerId);
+    if (!container) return;
+
+    totalModels++;
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
     
@@ -63,10 +68,15 @@ function initThreeJS(containerId) {
             const scale = 2 / maxDim;
             model.scale.multiplyScalar(scale);
             model.position.sub(center.multiplyScalar(scale));
+            
+            modelsLoaded++;
+            checkAllContentLoaded();
         },
         undefined,
         function (error) {
             console.error('Error loading 3D model:', error);
+            modelsLoaded++;
+            checkAllContentLoaded();
         }
     );
 
@@ -80,11 +90,96 @@ function animate() {
         mixer.update(clock.getDelta());
     }
     
-    renderer.render(scene, camera);
+    if (renderer && scene && camera) {
+        renderer.render(scene, camera);
+    }
 }
 
-// Initialize 3D models
+// Create gallery items dynamically
+function createGalleryItems() {
+    const galleryGrid = document.querySelector('.gallery-grid');
+    if (!galleryGrid) return;
+
+    galleryData.forEach(item => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = `gallery-item ${item.category}`;
+        galleryItem.setAttribute('data-category', item.category);
+
+        const card3D = document.createElement('div');
+        card3D.className = 'card-3d';
+
+        const cardFront = document.createElement('div');
+        cardFront.className = 'card-front';
+
+        if (item.category === '3d') {
+            const modelContainer = document.createElement('div');
+            modelContainer.className = 'model-container';
+            modelContainer.id = `model${item.id}`;
+            cardFront.appendChild(modelContainer);
+        } else {
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.alt = item.title;
+            img.onload = () => {
+                modelsLoaded++;
+                checkAllContentLoaded();
+            };
+            img.onerror = () => {
+                console.error(`Error loading image: ${item.image}`);
+                modelsLoaded++;
+                checkAllContentLoaded();
+            };
+            cardFront.appendChild(img);
+        }
+
+        const title = document.createElement('h3');
+        title.textContent = item.title;
+        cardFront.appendChild(title);
+
+        const cardBack = document.createElement('div');
+        cardBack.className = 'card-back';
+        
+        const description = document.createElement('p');
+        description.textContent = item.description;
+        cardBack.appendChild(description);
+
+        const tags = document.createElement('span');
+        tags.className = 'tags';
+        tags.textContent = item.tags.join(' ');
+        cardBack.appendChild(tags);
+
+        card3D.appendChild(cardFront);
+        card3D.appendChild(cardBack);
+        galleryItem.appendChild(card3D);
+        galleryGrid.appendChild(galleryItem);
+    });
+}
+
+// Check if all content is loaded
+function checkAllContentLoaded() {
+    const totalContent = galleryData.length;
+    if (modelsLoaded >= totalContent) {
+        hideLoadingScreen();
+    }
+}
+
+// Hide loading screen
+function hideLoadingScreen() {
+    const loadingScreen = document.querySelector('.loading-screen');
+    if (loadingScreen) {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }
+}
+
+// Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
+    // Create gallery items
+    createGalleryItems();
+
+    // Initialize 3D models
     const modelContainers = document.querySelectorAll('.model-container');
     modelContainers.forEach(container => {
         initThreeJS(container.id);
@@ -98,6 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize gallery item hover effects
     initGalleryHoverEffects();
+
+    // Set a timeout to hide loading screen if content takes too long
+    setTimeout(hideLoadingScreen, 5000);
 });
 
 // Gallery Filtering
@@ -155,15 +253,4 @@ function initGalleryHoverEffects() {
             item.style.transform = 'scale(1)';
         });
     });
-}
-
-// Loading Animation
-window.addEventListener('load', () => {
-    const loading = document.querySelector('.loading');
-    if (loading) {
-        loading.style.opacity = '0';
-        setTimeout(() => {
-            loading.style.display = 'none';
-        }, 500);
-    }
-}); 
+} 
