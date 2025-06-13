@@ -138,12 +138,12 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="project-filters">
+        <!-- <div class="project-filters">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="web">Web</button>
             <button class="filter-btn" data-filter="mobile">Mobile</button>
             <button class="filter-btn" data-filter="design">Design</button>
-        </div>
+        </div> -->
         <div class="project-grid">
             <!-- Project cards will be added dynamically with JavaScript -->
         </div>
@@ -250,9 +250,31 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <button class="contact-btn" id="contactBtn">
+            <i class="fas fa-envelope contact-icon"></i>
+            <i class="fas fa-times close-icon"></i>
+        </button>
+        <div class="social-links" id="socialLinks">
+            <a href="https://wa.me/2347051653108" class="social-link" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:agarialvin101@gmail.com" class="social-link" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.instagram.com/yourusername" class="social-link" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@yourusername" class="social-link" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </div>
+
     <!-- Project Card Template -->
     <template id="project-template">
-        <div class="project-card">
+        <div class="project-card" data-category="">
             <div class="card-inner">
                 <div class="card-front">
                     <div class="project-image">

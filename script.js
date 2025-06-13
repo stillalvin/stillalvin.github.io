@@ -1,13 +1,26 @@
 // Loading Screen
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const body = document.body;
     const loadingScreen = document.querySelector('.loading-screen');
     const loaderText = document.querySelector('.loader-text');
+    const floatingContact = document.querySelector('.floating-contact');
+    
+    // Hide floating contact and prevent scrolling
+    body.classList.add('loading');
+    if (floatingContact) {
+        floatingContact.style.display = 'none';
+    }
     
     // Wait for text animation to complete
     setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
             loadingScreen.style.display = 'none';
+            // Show floating contact and allow scrolling
+            body.classList.remove('loading');
+            if (floatingContact) {
+                floatingContact.style.display = 'flex';
+            }
         }, 500);
     }, 2000); // Adjust this timing based on your animation duration
 });
@@ -158,28 +171,28 @@ backToTop.addEventListener('click', () => {
 const projects = [
     {
         title: "SHOEPALACE(E-commerce)",
-        description: "A creative portfolio website with anime-inspired design",
-        image: "assets/images/pro-1.png",
+        description: "This is a shoe buying website designed to provide users with an easy and enjoyable online shopping experience for footwear.",
+        image: "assets/images/projects/pro-1.png",
         technologies: ["HTML", "CSS", "JavaScript"],
         category: "web",
         link: "https://stillalvin.github.io/shoepalace/"
     },
     {
-        title: "3D Character Viewer",
-        description: "Interactive 3D character viewer with animations",
-        image: "https://via.placeholder.com/300x200",
-        technologies: ["Three.js", "GSAP", "Blender"],
-        category: "design",
-        link: "#"
+        title: "HOSTCANON",
+        description: "This is a web hosting service platform that allows users to browse hosting plans and manage their domains effortlessly.",
+        image: "assets/images/projects/pro-2.png",
+        technologies: ["Php", "MySQL", "JavaScript"],
+        category: "web",
+        link: "https://hostcanon.com/"
     },
-    {
-        title: "Mobile Game UI",
-        description: "Anime-style mobile game interface design",
-        image: "https://via.placeholder.com/300x200",
-        technologies: ["Figma", "Adobe XD", "Illustrator"],
-        category: "mobile",
-        link: "#"
-    }
+    // {
+    //     title: "Mobile Game UI",
+    //     description: "Anime-style mobile game interface design",
+    //     image: "https://via.placeholder.com/300x200",
+    //     technologies: ["Figma", "Adobe XD", "Illustrator"],
+    //     category: "mobile",
+    //     link: "#"
+    // }
 ];
 
 // Create project cards
@@ -196,6 +209,10 @@ function createProjectCards() {
 function createProjectCard(project) {
     const template = document.getElementById('project-template');
     const card = template.content.cloneNode(true);
+    
+    // Set data-category attribute
+    const projectCard = card.querySelector('.project-card');
+    projectCard.setAttribute('data-category', project.category);
     
     // Set project image
     const img = card.querySelector('.project-image img');
@@ -313,4 +330,32 @@ const revealOnScroll = () => {
 };
 
 window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll); 
+window.addEventListener('load', revealOnScroll);
+
+// Floating Contact Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const contactBtn = document.getElementById('contactBtn');
+    const socialLinks = document.getElementById('socialLinks');
+
+    if (contactBtn && socialLinks) {
+        // Toggle social links
+        contactBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            contactBtn.classList.toggle('active');
+            socialLinks.classList.toggle('show');
+        });
+
+        // Close social links when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!contactBtn.contains(e.target) && !socialLinks.contains(e.target)) {
+                contactBtn.classList.remove('active');
+                socialLinks.classList.remove('show');
+            }
+        });
+
+        // Prevent social links from closing when clicking inside
+        socialLinks.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+}); 
