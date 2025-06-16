@@ -27,12 +27,12 @@ body {
 }
 
 /* Loading Screen */
-body.loading {
+/* body.loading {
     overflow: hidden;
     position: fixed;
     width: 100%;
     height: 100%;
-}
+} */
 
 body.loading .floating-contact {
     display: none;

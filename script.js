@@ -175,7 +175,7 @@ const projects = [
         image: "assets/images/projects/pro-1.png",
         technologies: ["HTML", "CSS", "JavaScript"],
         category: "web",
-        link: "https://stillalvin.github.io/shoepalace/"
+        link: "https://shoepalace-9b1e.onrender.com/"
     },
     {
         title: "HOSTCANON",
@@ -183,7 +183,7 @@ const projects = [
         image: "assets/images/projects/pro-2.png",
         technologies: ["Php", "MySQL", "JavaScript"],
         category: "web",
-        link: "https://hostcanon.com/"
+        link: "https://hostcanon.onrender.com/"
     },
     // {
     //     title: "Mobile Game UI",
