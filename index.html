@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Creative Developer & Designer Portfolio - Anime-Inspired Digital Experiences">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <title>Alvin's Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/main.css">
     <!-- Three.js for 3D elements -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- GSAP for smooth animations -->
@@ -14,14 +15,16 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loader-content">
             <div class="loader-icon">
-                <img src="assets/images/favicon.png" alt="A" class="favicon">
+                <img src="assets/images/XOsa.gif" alt="A">
             </div>
             <div class="loader-text">
                 <span>A</span>
@@ -57,7 +60,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="glitch-text">Welcome to My World</h1>
+            <h1 class="glitch-text" data-text="Welcome to My World">Welcome to My World</h1>
             <p class="subtitle">Developer & Designer</p>
             <div class="hero-description">
                 <p>Creating digital experiences that blend creativity with technology</p>
@@ -79,8 +82,10 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p class="highlight">I'm a passionate developer with a love for anime and creative design. I combine technical skills with artistic vision to create unique digital experiences.</p>
-                <p>With expertise in modern web technologies and a keen eye for design, I bring ideas to life through clean, efficient code and engaging user interfaces.</p>
+                <p class="highlight">I'm a passionate developer with a love for anime and creative design. I combine
+                    technical skills with artistic vision to create unique digital experiences.</p>
+                <p>With expertise in modern web technologies and a keen eye for design, I bring ideas to life through
+                    clean, efficient code and engaging user interfaces.</p>
                 <div class="about-stats">
                     <div class="stat-item">
                         <span class="stat-number">1</span>
@@ -156,8 +161,8 @@
     <!-- <section id="gallery" class="gallery">
         <h2 class="section-title">Gallery</h2>
         <div class="gallery-grid"> -->
-            <!-- Gallery items will be added dynamically -->
-        <!-- </div>
+    <!-- Gallery items will be added dynamically -->
+    <!-- </div>
         <div class="view-more">
             <a href="pages/gallery" class="btn secondary">View Full Gallery</a>
         </div>
@@ -167,8 +172,8 @@
     <!-- <section id="blog" class="blog">
         <h2 class="section-title">Latest Posts</h2>
         <div class="blog-grid"> -->
-            <!-- Blog posts will be added dynamically -->
-        <!-- </div>
+    <!-- Blog posts will be added dynamically -->
+    <!-- </div>
         <div class="view-more">
             <a href="pages/blog" class="btn secondary">Read More Posts</a>
         </div>
@@ -195,17 +200,17 @@
                     <p>Lagos, Nigeria</p>
                 </div>
             </div>
-            <form id="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/xanbbewr" method="post">
                 <div class="form-group">
-                    <input type="text" id="name" placeholder="" required>
+                    <input type="text" id="name" name="name" placeholder="" required>
                     <label for="name">Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" placeholder="" required>
+                    <input type="email" id="email" name="email" placeholder="" required>
                     <label for="email">Email</label>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" placeholder="" required></textarea>
+                    <textarea id="message" name="message" placeholder="" rows="5" required></textarea>
                     <label for="message">Message</label>
                 </div>
                 <button type="submit" class="btn primary">
@@ -235,9 +240,8 @@
             </div>
             <div class="footer-social">
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="instagram-unavailable.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -263,7 +267,7 @@
             <a href="mailto:agarialvin101@gmail.com" class="social-link" title="Email">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://www.instagram.com/still.alvin1" class="social-link" target="_blank" title="Instagram">
+            <a href="instagram-unavailable" class="social-link" title="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
             <a href="https://www.tiktok.com/@still.alvin" class="social-link" target="_blank" title="TikTok">
@@ -295,6 +299,13 @@
         </div>
     </template>
 
+    <!-- Modular JavaScript files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/three-background.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/floating-contact.js"></script>
     <script src="script.js"></script>
 </body>
-</html> 
+
+</html>

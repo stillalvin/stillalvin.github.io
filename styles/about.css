@@ -9,13 +9,15 @@
     background-size: cover;
     background-position: center;
     padding: 2rem;
+    margin-top: 40px;
 }
 
 .about-hero-content h1 {
     font-size: 3.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    animation: fadeInUp 1s ease;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .about-hero-content .subtitle {

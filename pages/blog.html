@@ -5,22 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Anime & Tech</title>
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/blog.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <img src="../assets/images/favicon.png" alt="A" class="favicon">
+            </div>
+            <div class="loader-text">
+                <span>A</span>
+                <span>L</span>
+                <span>V</span>
+                <span>I</span>
+                <span>N</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo-text">Portfolio</div>
+        <div class="logo">
+            <a href="../index" class="logo-text">Portfolio</a>
+            <div class="logo-decoration"></div>
+        </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="blog.html" class="active">Blog</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="../index">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="../index#projects">Projects</a></li>
+            <li><a href="#" class="active">Blog</a></li>
+            <li><a href="../index#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -123,6 +147,64 @@
         <a href="#">Next</a>
     </div>
 
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Portfolio</span>
+            </div>
+            <div class="footer-links">
+                <a href="../index">Home</a>
+                <a href="about">About</a>
+                <a href="../index#projects">Projects</a>
+                <a href="../index#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Alvin. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <button class="contact-btn" id="contactBtn">
+            <i class="fas fa-envelope contact-icon"></i>
+            <i class="fas fa-times close-icon"></i>
+        </button>
+        <div class="social-links" id="socialLinks">
+            <a href="https://wa.me/2347051653108" class="social-link" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:agarialvin101@gmail.com" class="social-link" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="../instagram-unavailable" class="social-link" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@still.alvin" class="social-link" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modular JavaScript files -->
+    <script src="../js/navigation.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/floating-contact.js"></script>
+    <script src="../script.js"></script>
     <script src="../scripts/blog.js"></script>
 </body>
 </html> 

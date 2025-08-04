@@ -1,4 +1,4 @@
-// Navigation functionality
+// Navigation functionality - Single source of truth for all navigation
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const navToggle = document.querySelector('.nav-toggle');
@@ -32,24 +32,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Active navigation link
     const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-links a');
+    const currentPath = window.location.pathname;
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-
+    // Set initial active states for different pages
+    if (currentPath.includes('/about')) {
         navItems.forEach(item => {
             item.classList.remove('active');
-            if (item.getAttribute('href').slice(1) === current) {
+            if (item.textContent.toLowerCase() === 'about') {
                 item.classList.add('active');
             }
         });
-    });
+    } else if (currentPath.includes('/projects')) {
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.textContent.toLowerCase() === 'projects') {
+                item.classList.add('active');
+            }
+        });
+    }
+
+    // Only add scroll event listener for the main page
+    if (!currentPath.includes('/about') && !currentPath.includes('/projects')) {
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    }
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

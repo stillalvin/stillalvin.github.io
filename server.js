@@ -9,7 +9,12 @@ app.use(express.static(__dirname));
 // Handle clean URLs
 app.get('/*', (req, res, next) => {
     if (!req.path.includes('.')) {
-        res.sendFile(path.join(__dirname, req.path + '.html'));
+        const filePath = path.join(__dirname, req.path + '.html');
+        res.sendFile(filePath, (err) => {
+            if (err) {
+                next(); // If file doesn't exist, move to next middleware (404 handler)
+            }
+        });
     } else {
         next();
     }
@@ -17,7 +22,7 @@ app.get('/*', (req, res, next) => {
 
 // Handle 404
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '404.html'));
+    res.status(404).sendFile(path.join(__dirname, 'pages/404.html'));
 });
 
 app.listen(port, () => {

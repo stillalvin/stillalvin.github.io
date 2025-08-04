@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Portfolio</title>
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/projects.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -18,7 +18,7 @@
     <div class="loading-screen">
         <div class="loader-content">
             <div class="loader-icon">
-                <img src="../assets/images/favicon.png" alt="A" class="favicon">
+                <img src="../assets/images/XOsa.gif" alt="A">
             </div>
             <div class="loader-text">
                 <span>A</span>
@@ -43,17 +43,17 @@
         </div>
         <ul class="nav-links">
             <li><a href="../index.html">Home</a></li>
-            <li><a href="about">About</a></li>
+            <li><a href="about.html">About</a></li>
             <!-- <li><a href="gallery.html">Gallery</a></li> -->
-            <li><a href="#" class="active">Projects</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
             <!-- <li><a href="blog.html">Blog</a></li> -->
-            <li><a href="../index#contact">Contact</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
         </ul>
     </nav>
 
     <!-- Projects Header -->
     <section class="projects-header">
-        <h1>My Projects</h1>
+        <h1 class="glitch-text" data-text="My Projects">My Projects</h1>
         <div class="project-filters">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="web">Web Development</button>
@@ -67,32 +67,21 @@
         <!-- Project Card 1 -->
         <div class="project-card" data-category="web">
             <div class="card-inner">
-                <div class="card-front">
-                    <div class="project-image">
-                        <img src="../assets/images/projects/pro-1.png" alt="Project 1">
-                        <div class="project-overlay">
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>SHOEPALACE(E-commerce)</h3>
-                        <p>A modern e-commerce website for buying shoes</p>
+                <div class="project-image">
+                    <img src="../assets/images/projects/pro-1.png" alt="Project 1">
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
                     </div>
                 </div>
-                <div class="card-back">
-                    <div class="project-details">
-                        <h3>Project Details</h3>
-                        <p>A responsive e-commerce website built with HTML, CSS, and JavaScript.</p>
-                        <!-- <ul class="project-features">
-                        </ul> -->
-                        <div class="project-links">
-                            <a href="https://shoepalace-9b1e.onrender.com/" class="btn primary" target="_blank"><i class="fas fa-external-link-alt"></i> PREVIEW </a>
-                            <!-- <a href="#" class="btn secondary"><i class="fab fa-github"></i> Source Code</a> -->
-                        </div>
+                <div class="project-info">
+                    <h3>SHOEPALACE(E-commerce)</h3>
+                    <p>A responsive e-commerce website built with HTML, CSS, and JavaScript. A modern e-commerce website for buying shoes.</p>
+                    <div class="project-links">
+                        <a href="https://shoepalace-9b1e.onrender.com/" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Live
+                        </a>
                     </div>
                 </div>
             </div>
@@ -101,36 +90,49 @@
         <!-- Project Card 2 -->
         <div class="project-card" data-category="3d">
             <div class="card-inner">
-                <div class="card-front">
-                    <div class="project-image">
-                        <img src="../assets/images/projects/pro-2.png" alt="Project 2">
-                        <div class="project-overlay">
-                            <div class="project-tech">
-                                <span>Php</span>
-                                <span>MySql</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>HOSTCANON</h3>
-                        <p>This is a web hosting service platform that allows users to browse hosting plans and manage their domains effortlessly.</p>
+                <div class="project-image">
+                    <img src="../assets/images/projects/pro-2.png" alt="Project 2">
+                    <div class="project-tech">
+                        <span>Php</span>
+                        <span>MySql</span>
+                        <span>JavaScript</span>
                     </div>
                 </div>
-                <div class="card-back">
-                    <div class="project-details">
-                        <h3>Project Details</h3>
-                        <p>A web hosting service platform built with PHP, MySQL, and JavaScript.</p>
-                        <!-- <ul class="project-features">
-                        </ul> -->
-                        <div class="project-links">
-                            <a href="https://hostcanon.onrender.com" class="btn primary" target="_blank"><i class="fas fa-external-link-alt"></i> PREVIEW </a>
-                        </div>
+                <div class="project-info">
+                    <h3>HOSTCANON</h3>
+                    <p>A web hosting service platform built with PHP, MySQL, and JavaScript. This platform allows users to browse hosting plans and manage their domains effortlessly.</p>
+                    <div class="project-links">
+                        <a href="https://hostcanon.onrender.com" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Live
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Portfolio</span>
+            </div>
+            <div class="footer-links">
+                <a href="index">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Alvin. All rights reserved.</p>
+        </div>
+    </footer>
+
 
     <!-- Back to Top Button -->
     <button id="back-to-top" aria-label="Back to top">
@@ -159,8 +161,11 @@
         </div>
     </div>
 
-    <script src="../scripts/projects.js"></script>
-    <script src="../script.js"></script>
+    <!-- Modular JavaScript files -->
     <script src="../js/navigation.js"></script>
+    <script src="../js/projects.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/floating-contact.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html> 

@@ -6,7 +6,7 @@
     <meta name="description" content="About Alvin - Creative Developer & Designer Portfolio">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
     <title>About Me | Alvin's Portfolio</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/about.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
     <div class="loading-screen">
         <div class="loader-content">
             <div class="loader-icon">
-                <img src="../assets/images/favicon.png" alt="A" class="favicon">
+                <img src="../assets/images/XOsa.gif" alt="A" class="favicon">
             </div>
             <div class="loader-text">
                 <span>A</span>
@@ -43,8 +43,8 @@
         </div>
         <ul class="nav-links">
             <li><a href="../index">Home</a></li>
-            <li><a href="#" class="active">About</a></li>
-            <li><a href="../index#projects">Projects</a></li>
+            <li><a href="about" class="active">About</a></li>
+            <li><a href="projects">Projects</a></li>
             <!-- <li><a href="../index#gallery">Gallery</a></li> -->
             <li><a href="../index#contact">Contact</a></li>
         </ul>
@@ -53,7 +53,7 @@
     <!-- About Hero Section -->
     <section class="about-hero">
         <div class="about-hero-content">
-            <h1>About Me</h1>
+            <h1 class="glitch-text" data-text="About Me">About Me</h1>
             <p class="subtitle">Get to know more about my journey</p>
         </div>
     </section>
@@ -155,6 +155,28 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Backend Development</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fa-brands fa-php"></i>
+                                <span>PHP</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" style="background: rgba(255, 255, 255, 0.05)">
+                                
+                            </div>
+                            <div class="skill-item">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Interests Section -->
@@ -223,7 +245,7 @@
             <a href="mailto:agarialvin101@gmail.com" class="social-link" title="Email">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://www.instagram.com/still.alvin1" class="social-link" target="_blank" title="Instagram">
+            <a href="../instagram-unavailable.html" class="social-link" target="_blank" title="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
             <a href="https://www.tiktok.com/@still.alvin" class="social-link" target="_blank" title="TikTok">
@@ -232,8 +254,10 @@
         </div>
     </div>
 
+    <!-- Modular JavaScript files -->
     <script src="../js/navigation.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/floating-contact.js"></script>
     <script src="../script.js"></script>
-    <script src="../scripts/about.js"></script>
 </body>
 </html> 
